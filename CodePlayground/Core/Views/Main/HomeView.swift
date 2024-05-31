@@ -8,8 +8,59 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var showCreatingProject: Bool = false
+    @State var showSearch: Bool = false
+    @State var searchText: String = ""
+    @EnvironmentObject var userViewModel: UserViewModel
+
+    let columns = [
+        GridItem(.adaptive(minimum: 200))
+    ]
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                HeaderView(showSearch: $showSearch, searchText: $searchText)
+                    .frame(height: 50)
+
+                ZStack(alignment: .bottomTrailing ) {
+                    GeometryReader { geometry in
+                        ScrollView {
+                            LazyVGrid(columns: [GridItem(.adaptive(minimum: geometry.size.width * 0.4))], spacing: 90) {
+                                PlaugroundPreview(width: geometry.size.width * 0.7 , height: geometry.size.height * 1.6 , project: ProjectViewModel(project: PlaygroundProject(name: "hello")))
+                                PlaugroundPreview(width: geometry.size.width * 0.7 , height: geometry.size.height * 1.6 , project: ProjectViewModel(project: PlaygroundProject(name: "hello")))
+                                PlaugroundPreview(width: geometry.size.width * 0.7 , height: geometry.size.height * 1.6 , project: ProjectViewModel(project: PlaygroundProject(name: "hello")))
+                                PlaugroundPreview(width: geometry.size.width * 0.7 , height: geometry.size.height * 1.6 , project: ProjectViewModel(project: PlaygroundProject(name: "hello")))
+                            }
+                            .padding(.top,50)
+                        }
+                        .scrollIndicators(.hidden)
+                    }
+                    HStack{
+                        Spacer()
+                        Button(action: {showCreatingProject.toggle()}, label: {
+                            Image(systemName: "cross.fill")
+                                .font(.system(size: 25))
+                                .foregroundStyle(.white)
+                                .background(
+                                    Circle()
+                                        .foregroundStyle(.orange)
+                                        .frame(width: 50, height: 50)
+                                        .overlay(content: {
+                                            Circle()
+                                                .stroke()
+                                                .foregroundStyle(.white)
+                                        })
+                                )
+                        })
+                    }
+                    .padding(.bottom)
+                }
+            }
+        }
+        .sheet(isPresented: $showCreatingProject, content: {
+            CreatingProjectView(close: {showCreatingProject.toggle()})
+        })
     }
 }
 

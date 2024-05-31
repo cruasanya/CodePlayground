@@ -9,12 +9,24 @@ import SwiftUI
 
 struct CreatingProjectView: View {
     var close: () -> Void
+    @State var projectName: String = ""
+    @EnvironmentObject var userViewModel: UserViewModel
 
     var body: some View {
-        Button {
-            close()
-        } label: {
-            Text("Close")
+        VStack {
+            InputView(text: $projectName, title: "Project Name", placeholder: "Input project name")
+            HStack {
+                Button {
+                    userViewModel.createProject(name: projectName)
+                } label: {
+                    Text("Add")
+                }
+                Button {
+                    close()
+                } label: {
+                    Text("Close")
+                }
+            }
         }
 
     }

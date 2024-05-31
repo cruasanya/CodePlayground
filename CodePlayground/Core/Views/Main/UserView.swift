@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct UserView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            userViewModel.signOut()
+        } label: {
+            Text("LogOut")
+        }
+
     }
 }
 

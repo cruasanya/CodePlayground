@@ -8,15 +8,14 @@
 import Foundation
 
 
-class CodePlaygroundProject: Identifiable, Codable {
-    var id: String
+class PlaygroundProject: Identifiable, Codable {
+    var id: UUID
     var name: String
-    var characters: [PlaygroundCharacter] = []
-    var backgroudName: String
+    var characters: [CharacterViewModel] = [CharacterViewModel(character: .MOCK_CHARACTER)]
+    var backgroudName: String = ""
 
-    init(id: String, name: String, backgroudName: String) {
-        self.id = id
+    init(name: String) {
+        self.id = UUID()
         self.name = name
-        self.backgroudName = backgroudName
     }
 }
