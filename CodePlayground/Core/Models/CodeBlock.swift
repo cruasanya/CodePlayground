@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class CodeBlock: Identifiable, Codable {
+    
+}
+
+enum BlockType {
+    
+}
