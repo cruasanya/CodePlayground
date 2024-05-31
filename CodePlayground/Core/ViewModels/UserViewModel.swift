@@ -80,12 +80,14 @@ class UserViewModel: ObservableObject {
         let newProject = PlaygroundProject(name: name)
         let projectViewModel = ProjectViewModel(project: newProject)
         user.projects.append(projectViewModel)
+        updateUser(user: user)
     }
 
     func deleteProject(byID id: UUID) {
         guard let user = currentUser else {return}
         if let index = user.projects.firstIndex(where: {$0.getID() == id}) {
             user.projects.remove(at: index)
+            updateUser(user: user)
         } else {
             return
         }
@@ -95,8 +97,17 @@ class UserViewModel: ObservableObject {
         guard let user = currentUser else {return}
         if let index = user.projects.firstIndex(where: {$0.getID() == id}) {
             user.projects[index].changeName(name: newName)
+            updateUser(user: user)
         } else {
             return
+        }
+    }
+
+    func updateUser(user: User) {
+        let userReference = Firestore.firestore().collection("users").document(user.id)
+        userReference.updateData(["projects" : user.projects])
+        Task {
+            try await fetchUser()
         }
     }
 }

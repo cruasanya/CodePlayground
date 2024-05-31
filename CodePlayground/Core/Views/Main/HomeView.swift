@@ -24,18 +24,22 @@ struct HomeView: View {
                     .frame(height: 50)
 
                 ZStack(alignment: .bottomTrailing ) {
+
                     GeometryReader { geometry in
                         ScrollView {
                             LazyVGrid(columns: [GridItem(.adaptive(minimum: geometry.size.width * 0.4))], spacing: 90) {
-                                PlaugroundPreview(width: geometry.size.width * 0.7 , height: geometry.size.height * 1.6 , project: ProjectViewModel(project: PlaygroundProject(name: "hello")))
-                                PlaugroundPreview(width: geometry.size.width * 0.7 , height: geometry.size.height * 1.6 , project: ProjectViewModel(project: PlaygroundProject(name: "hello")))
-                                PlaugroundPreview(width: geometry.size.width * 0.7 , height: geometry.size.height * 1.6 , project: ProjectViewModel(project: PlaygroundProject(name: "hello")))
-                                PlaugroundPreview(width: geometry.size.width * 0.7 , height: geometry.size.height * 1.6 , project: ProjectViewModel(project: PlaygroundProject(name: "hello")))
+                                if let projects = userViewModel.currentUser?.projects {
+                                    ForEach(projects) { project in
+                                        PlaugroundPreview(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6 , project: project)
+
+                                    }
+                                }
                             }
                             .padding(.top,50)
                         }
                         .scrollIndicators(.hidden)
                     }
+
                     HStack{
                         Spacer()
                         Button(action: {showCreatingProject.toggle()}, label: {
@@ -67,3 +71,5 @@ struct HomeView: View {
 #Preview {
     HomeView()
 }
+
+//PlaugroundPreview(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6 , project: playground)
