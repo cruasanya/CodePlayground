@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct CreatingProjectView: View {
+    var close: () -> Void
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            close()
+        } label: {
+            Text("Close")
+        }
+
     }
 }
 
 #Preview {
-    CreatingProjectView()
+    CreatingProjectView(close: {})
 }
