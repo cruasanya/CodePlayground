@@ -29,9 +29,8 @@ struct HomeView: View {
                         ScrollView {
                             LazyVGrid(columns: [GridItem(.adaptive(minimum: geometry.size.width * 0.4))], spacing: 90) {
                                 if let projects = userViewModel.currentUser?.projects {
-                                    ForEach(projects) { project in
-                                        PlaugroundPreview(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6 , project: project)
-
+                                    ForEach(projects) { playground in
+                                        PlaugroundPreview(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6 , project: playground)
                                     }
                                 }
                             }
@@ -72,4 +71,4 @@ struct HomeView: View {
     HomeView()
 }
 
-//PlaugroundPreview(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6 , project: playground)
+

@@ -17,7 +17,9 @@ struct CreatingProjectView: View {
             InputView(text: $projectName, title: "Project Name", placeholder: "Input project name")
             HStack {
                 Button {
-                    userViewModel.createProject(name: projectName)
+                    Task {
+                        await userViewModel.createProject(name: projectName)
+                    }
                 } label: {
                     Text("Add")
                 }

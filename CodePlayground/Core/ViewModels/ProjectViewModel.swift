@@ -9,8 +9,8 @@ import Foundation
 
 import SwiftUI
 
-class ProjectViewModel: ObservableObject, Codable {
-    @Published private var project: PlaygroundProject
+class ProjectViewModel: ObservableObject, Codable, Identifiable {
+    @Published var project: PlaygroundProject
 
     enum CodingKeys: String, CodingKey {
         case project
@@ -30,7 +30,7 @@ class ProjectViewModel: ObservableObject, Codable {
         try container.encode(project, forKey: .project)
     }
 
-    func getID() -> UUID {
+    func getID() -> String {
         return project.id
     }
 
