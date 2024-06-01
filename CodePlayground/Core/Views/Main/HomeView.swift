@@ -11,6 +11,7 @@ struct HomeView: View {
     @State var showCreatingProject: Bool = false
     @State var showSearch: Bool = false
     @State var searchText: String = ""
+    @State var resetRotations: Bool = false
     @EnvironmentObject var userViewModel: UserViewModel
 
     let columns = [
@@ -22,15 +23,16 @@ struct HomeView: View {
             VStack {
                 HeaderView(showSearch: $showSearch, searchText: $searchText)
                     .frame(height: 50)
-
+                    .onTapGesture {
+                        resetRotations.toggle()
+                    }
                 ZStack(alignment: .bottomTrailing ) {
-
                     GeometryReader { geometry in
                         ScrollView {
                             LazyVGrid(columns: [GridItem(.adaptive(minimum: geometry.size.width * 0.4))], spacing: 90) {
                                 if let projects = userViewModel.currentUser?.projects {
                                     ForEach(projects) { playground in
-                                        PlaugroundPreview(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6 , project: playground)
+                                        PlaugroundPreview(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6 , project: playground, resetRotation: $resetRotations)
                                     }
                                 }
                             }
@@ -38,7 +40,6 @@ struct HomeView: View {
                         }
                         .scrollIndicators(.hidden)
                     }
-
                     HStack{
                         Spacer()
                         Button(action: {showCreatingProject.toggle()}, label: {
