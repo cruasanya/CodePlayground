@@ -8,7 +8,7 @@
 import Foundation
 
 class PlaygroundCharacter: Identifiable, Codable {
-    var id: UUID
+    var id: String
     var spriteName: String
     var characterName: String
     var isHide: Bool = false
@@ -19,7 +19,7 @@ class PlaygroundCharacter: Identifiable, Codable {
     var codeBlocks: [CodeBlockViewModel] = []
 
     init(spriteName: String, characterName: String) {
-        self.id = UUID()
+        self.id = UUID().uuidString
         self.spriteName = spriteName
         self.characterName = characterName
     }

@@ -10,7 +10,7 @@ import SwiftUI
 struct PlaugroundPreview: View {
     var width: CGFloat
     var height: CGFloat
-    @ObservedObject var project: ProjectViewModel
+    @State var project: ProjectViewModel
     var body: some View {
 
             VStack {

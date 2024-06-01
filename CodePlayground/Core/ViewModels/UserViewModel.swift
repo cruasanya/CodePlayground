@@ -75,39 +75,41 @@ class UserViewModel: ObservableObject {
         self.currentUser = nil
     }
 
-    func createProject(name: String) {
+    func createProject(name: String) async {
         guard let user = currentUser else {return}
         let newProject = PlaygroundProject(name: name)
         let projectViewModel = ProjectViewModel(project: newProject)
         user.projects.append(projectViewModel)
-        updateUser(user: user)
+        await updateUser(user: user)
     }
 
-    func deleteProject(byID id: UUID) {
+    func deleteProject(byID id: String) async {
         guard let user = currentUser else {return}
         if let index = user.projects.firstIndex(where: {$0.getID() == id}) {
             user.projects.remove(at: index)
-            updateUser(user: user)
+            await updateUser(user: user)
         } else {
             return
         }
     }
 
-    func changeProjectName(newName: String, id: UUID) {
+    func changeProjectName(newName: String, id: String) async {
         guard let user = currentUser else {return}
         if let index = user.projects.firstIndex(where: {$0.getID() == id}) {
             user.projects[index].changeName(name: newName)
-            updateUser(user: user)
+            await updateUser(user: user)
         } else {
             return
         }
     }
 
-    func updateUser(user: User) {
-        let userReference = Firestore.firestore().collection("users").document(user.id)
-        userReference.updateData(["projects" : user.projects])
-        Task {
-            try await fetchUser()
-        }
+    func updateUser(user: User) async {
+            do {
+                let encodeUser = try Firestore.Encoder().encode(user)
+                try await Firestore.firestore().collection("users").document(user.id).setData(encodeUser)
+                try await fetchUser()
+            } catch {
+                print("Failed to update user: \(error)")
+            }
     }
 }

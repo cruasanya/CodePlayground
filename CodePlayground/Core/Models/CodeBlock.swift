@@ -8,9 +8,15 @@
 import Foundation
 
 class CodeBlock: Identifiable, Codable {
-    
+    var id: String
+    var blockType: BlockType
+
+    init(type: BlockType) {
+        self.id = UUID().uuidString
+        self.blockType = type
+    }
 }
 
-enum BlockType {
-    
+enum BlockType: String, Codable {
+    case start = "Start"
 }
