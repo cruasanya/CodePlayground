@@ -32,6 +32,8 @@
 		D20AC5202C05D96A00E6C26A /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AC51F2C05D96A00E6C26A /* InputView.swift */; };
 		D20AC5222C05F78D00E6C26A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AC5212C05F78D00E6C26A /* HeaderView.swift */; };
 		D20AC5242C05FC3500E6C26A /* CreatingProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20AC5232C05FC3500E6C26A /* CreatingProjectView.swift */; };
+		D218F86C2C0C9A93001976C1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D218F86B2C0C9A93001976C1 /* Extensions.swift */; };
+		D2C804032C0B7ED4003B7DDF /* PlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C804022C0B7ED4003B7DDF /* PlaygroundView.swift */; };
 		D2F8F2A42C09BB2B00A95CB9 /* PlaygroundCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2A32C09BB2B00A95CB9 /* PlaygroundCharacter.swift */; };
 		D2F8F2A62C09BCB000A95CB9 /* CodeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2A52C09BCB000A95CB9 /* CodeBlock.swift */; };
 		D2F8F2A82C09BF3E00A95CB9 /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2A72C09BF3E00A95CB9 /* ProjectViewModel.swift */; };
@@ -59,6 +61,8 @@
 		D20AC51F2C05D96A00E6C26A /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		D20AC5212C05F78D00E6C26A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		D20AC5232C05FC3500E6C26A /* CreatingProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingProjectView.swift; sourceTree = "<group>"; };
+		D218F86B2C0C9A93001976C1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D2C804022C0B7ED4003B7DDF /* PlaygroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundView.swift; sourceTree = "<group>"; };
 		D2F8F2A32C09BB2B00A95CB9 /* PlaygroundCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundCharacter.swift; sourceTree = "<group>"; };
 		D2F8F2A52C09BCB000A95CB9 /* CodeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBlock.swift; sourceTree = "<group>"; };
 		D2F8F2A72C09BF3E00A95CB9 /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				D20AC51F2C05D96A00E6C26A /* InputView.swift */,
 				D20AC5212C05F78D00E6C26A /* HeaderView.swift */,
 				D2F8F2AD2C09CE8E00A95CB9 /* PlaugroundPreview.swift */,
+				D218F86B2C0C9A93001976C1 /* Extensions.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				D20AC5232C05FC3500E6C26A /* CreatingProjectView.swift */,
+				D2C804022C0B7ED4003B7DDF /* PlaygroundView.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -311,7 +317,9 @@
 				D20AC4FB2C05C06800E6C26A /* SettingsView.swift in Sources */,
 				D2F8F2AE2C09CE8E00A95CB9 /* PlaugroundPreview.swift in Sources */,
 				D20AC5022C05C0F400E6C26A /* UserViewModel.swift in Sources */,
+				D2C804032C0B7ED4003B7DDF /* PlaygroundView.swift in Sources */,
 				D20AC5042C05C12200E6C26A /* PlaygroundProject.swift in Sources */,
+				D218F86C2C0C9A93001976C1 /* Extensions.swift in Sources */,
 				D20AC4F62C05BFC500E6C26A /* HomeView.swift in Sources */,
 				D20AC4FD2C05C0A400E6C26A /* User.swift in Sources */,
 				D2F8F2A82C09BF3E00A95CB9 /* ProjectViewModel.swift in Sources */,

@@ -15,17 +15,17 @@ struct InputView: View {
 
 
     var body: some View {
-        VStack(alignment: .leading,spacing: 12){
+        VStack(alignment: .leading, spacing: 12) {
             Text(title)
                 .foregroundStyle(.white)
                 .fontWeight(.semibold)
                 .font(.footnote)
 
-            if isSecureField{
-                SecureField(placeholder,text: $text)
+            if isSecureField {
+                SecureField(placeholder, text: $text)
                     .font(.system(size:14))
-            }else{
-                TextField(placeholder,text: $text)
+            }else {
+                TextField(placeholder, text: $text)
                     .font(.system(size:14))
             }
             Divider()

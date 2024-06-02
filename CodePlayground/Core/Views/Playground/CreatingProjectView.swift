@@ -9,28 +9,63 @@ import SwiftUI
 
 struct CreatingProjectView: View {
     var close: () -> Void
-    @State var projectName: String = ""
+    @State var projectName: String = "My project"
     @EnvironmentObject var userViewModel: UserViewModel
 
     var body: some View {
-        VStack {
-            InputView(text: $projectName, title: "Project Name", placeholder: "Input project name")
-            HStack {
-                Button {
-                    Task {
-                        await userViewModel.createProject(name: projectName)
+        ZStack {
+            Color(.black)
+                .ignoresSafeArea()
+            VStack {
+                Text("Project Name")
+                    .font(.title)
+                    .bold()
+                TextField("Input project name", text: $projectName)
+                    .font(.system(size:30))
+                Divider()
+                HStack {
+                    Button {
+                        Task {
+                            await userViewModel.createProject(name: projectName)
+                            close()
+                        }
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("Create")
+                            Image(systemName: "plus.circle")
+                            Spacer()
+                        }
+                        .bold()
+                        .font(.title)
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .foregroundStyle(.orange)
+                        }
                     }
-                } label: {
-                    Text("Add")
+                    .disabled(projectName == "")
+                    Button {
+                        close()
+                    } label: {
+                        HStack {
+                            Spacer()
+                            Text("Close")
+                            Image(systemName: "xmark.circle")
+                            Spacer()
+                        }
+                        .bold()
+                        .font(.title)
+                        .padding()
+                        .background {
+                            RoundedRectangle(cornerRadius: 25.0)
+                                .foregroundStyle(.orange)
+                        }
+                    }
                 }
-                Button {
-                    close()
-                } label: {
-                    Text("Close")
-                }
+                .buttonStyle(PlainButtonStyle())
             }
         }
-
     }
 }
 
