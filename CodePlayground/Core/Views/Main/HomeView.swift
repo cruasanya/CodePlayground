@@ -12,11 +12,16 @@ struct HomeView: View {
     @State var showSearch: Bool = false
     @State var searchText: String = ""
     @State var resetRotations: Bool = false
+    @State var projectIsSelected: Bool = false
     @EnvironmentObject var userViewModel: UserViewModel
 
-    let columns = [
-        GridItem(.adaptive(minimum: 200))
-    ]
+    var filteredProjects: [ProjectViewModel] {
+        if searchText.isEmpty {
+            return userViewModel.currentUser?.projects ?? []
+        } else {
+            return userViewModel.currentUser?.projects.filter { $0.project.name.localizedCaseInsensitiveContains(searchText) } ?? []
+        }
+    }
 
     var body: some View {
         NavigationStack {
@@ -27,14 +32,35 @@ struct HomeView: View {
                         resetRotations.toggle()
                     }
                 ZStack(alignment: .bottomTrailing ) {
+                    Color.clear
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            resetRotations.toggle()
+                            projectIsSelected.toggle()
+                            print("tap")
+                        }
+                        .zIndex(projectIsSelected ? 1 : 0)
+
                     GeometryReader { geometry in
                         ScrollView {
                             LazyVGrid(columns: [GridItem(.adaptive(minimum: geometry.size.width * 0.4))], spacing: 90) {
-                                if let projects = userViewModel.currentUser?.projects {
-                                    ForEach(projects) { playground in
-                                        PlaugroundPreview(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6 , project: playground, resetRotation: $resetRotations)
-                                    }
+
+                                ForEach(filteredProjects) { playground in
+                                    PlaugroundPreview(
+                                        width: geometry.size.width * 0.7,
+                                        height: geometry.size.height * 1.6,
+                                        deleteProject:  {
+                                            Task{
+                                                await userViewModel.deleteProject(byID:playground.getID())
+                                            }
+                                        },
+                                        project: playground,
+                                        resetRotation: $resetRotations,
+                                        projectIsSelected: $projectIsSelected
+                                    )
+
                                 }
+
                             }
                             .padding(.top,50)
                         }
@@ -65,6 +91,7 @@ struct HomeView: View {
         .sheet(isPresented: $showCreatingProject, content: {
             CreatingProjectView(close: {showCreatingProject.toggle()})
         })
+
     }
 }
 

@@ -10,9 +10,13 @@ import SwiftUI
 struct PlaugroundPreview: View {
     var width: CGFloat
     var height: CGFloat
+    var deleteProject: () -> Void
+    @State var isDeleted: Bool = false
     @State var project: ProjectViewModel
     @State var rotationDegrees: Double = 0
     @Binding var resetRotation: Bool
+    @Binding var projectIsSelected: Bool
+
 
     var body: some View {
         VStack(alignment: .center) {
@@ -49,7 +53,12 @@ struct PlaugroundPreview: View {
                         )
 
                     }
-                    Button(action: {}, label: {
+                    Button(action: {
+                        withAnimation(.easeInOut) {
+                            isDeleted.toggle()
+                        }
+                        deleteProject()
+                    }, label: {
                         VStack{
                             Image(systemName: "trash")
                             Text("Delete")
@@ -81,6 +90,7 @@ struct PlaugroundPreview: View {
             axis: (x: 1.0, y: 0.0, z: 0.0)
         )
         .onTapGesture {
+            projectIsSelected.toggle()
             withAnimation(.easeInOut) {
                 if rotationDegrees == 0 {
                     rotationDegrees = 180
@@ -89,16 +99,18 @@ struct PlaugroundPreview: View {
                 }
             }
         }
+        .zIndex(projectIsSelected ? 2 : 0)
         .onChange(of: resetRotation) {
             withAnimation(.easeInOut) {
                 rotationDegrees = 0
             }
         }
+        .opacity(isDeleted ? 0 : 1)
 
     }
 
 }
 
 #Preview {
-    PlaugroundPreview(width: 400, height: 300, project: ProjectViewModel(project: PlaygroundProject(name: "hello")), resetRotation: .constant(false))
+    PlaugroundPreview(width: 400, height: 300, deleteProject: {}, project: ProjectViewModel(project: PlaygroundProject(name: "hello")), resetRotation: .constant(false), projectIsSelected: .constant(false))
 }
