@@ -12,7 +12,7 @@ struct HomeView: View {
     @State var showSearch: Bool = false
     @State var searchText: String = ""
     @State var resetRotations: Bool = false
-    @State var projectIsSelected: Bool = false
+    @State var selectedProjectId: String? = nil
     @EnvironmentObject var userViewModel: UserViewModel
 
     var filteredProjects: [ProjectViewModel] {
@@ -31,44 +31,35 @@ struct HomeView: View {
                     .onTapGesture {
                         resetRotations.toggle()
                     }
-                ZStack(alignment: .bottomTrailing ) {
-                    Color.clear
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            resetRotations.toggle()
-                            projectIsSelected.toggle()
-                            print("tap")
-                        }
-                        .zIndex(projectIsSelected ? 1 : 0)
-
+                ZStack(alignment: .bottomTrailing) {
                     GeometryReader { geometry in
                         ScrollView {
                             LazyVGrid(columns: [GridItem(.adaptive(minimum: geometry.size.width * 0.4))], spacing: 90) {
-
                                 ForEach(filteredProjects) { playground in
-                                    PlaugroundPreview(
+                                    PlaygroundPreview(
                                         width: geometry.size.width * 0.7,
                                         height: geometry.size.height * 1.6,
-                                        deleteProject:  {
-                                            Task{
-                                                await userViewModel.deleteProject(byID:playground.getID())
+                                        deleteProject: {
+                                            Task {
+                                                await userViewModel.deleteProject(byID: playground.getID())
                                             }
                                         },
                                         project: playground,
                                         resetRotation: $resetRotations,
-                                        projectIsSelected: $projectIsSelected
+                                        isSelected: selectedProjectId == playground.project.id,
+                                        onSelect: {
+                                            selectedProjectId = playground.project.id
+                                        }
                                     )
-
                                 }
-
                             }
-                            .padding(.top,50)
+                            .padding(.top, 50)
                         }
                         .scrollIndicators(.hidden)
                     }
-                    HStack{
+                    HStack {
                         Spacer()
-                        Button(action: {showCreatingProject.toggle()}, label: {
+                        Button(action: { showCreatingProject.toggle() }, label: {
                             Image(systemName: "cross.fill")
                                 .font(.system(size: 25))
                                 .foregroundStyle(.white)
@@ -89,14 +80,11 @@ struct HomeView: View {
             }
         }
         .sheet(isPresented: $showCreatingProject, content: {
-            CreatingProjectView(close: {showCreatingProject.toggle()})
+            CreatingProjectView(close: { showCreatingProject.toggle() })
         })
-
     }
 }
 
 #Preview {
     HomeView()
 }
-
-

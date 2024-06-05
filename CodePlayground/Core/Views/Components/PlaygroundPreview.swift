@@ -1,5 +1,5 @@
 //
-//  PlaugroundPreview.swift
+//  PlaygroundPreview.swift
 //  CodePlayground
 //
 //  Created by Александр Новиков on 31.05.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlaugroundPreview: View {
+struct PlaygroundPreview: View {
     var width: CGFloat
     var height: CGFloat
     var deleteProject: () -> Void
@@ -15,8 +15,8 @@ struct PlaugroundPreview: View {
     @State var project: ProjectViewModel
     @State var rotationDegrees: Double = 0
     @Binding var resetRotation: Bool
-    @Binding var projectIsSelected: Bool
-
+    var isSelected: Bool
+    var onSelect: () -> Void
 
     var body: some View {
         VStack(alignment: .center) {
@@ -51,7 +51,6 @@ struct PlaugroundPreview: View {
                                 .stroke(style: .init(lineWidth: 4))
                                 .frame(width: width * 0.25, height: width * 0.25)
                         )
-
                     }
                     Button(action: {
                         withAnimation(.easeInOut) {
@@ -59,7 +58,7 @@ struct PlaugroundPreview: View {
                         }
                         deleteProject()
                     }, label: {
-                        VStack{
+                        VStack {
                             Image(systemName: "trash")
                             Text("Delete")
                         }
@@ -90,7 +89,6 @@ struct PlaugroundPreview: View {
             axis: (x: 1.0, y: 0.0, z: 0.0)
         )
         .onTapGesture {
-            projectIsSelected.toggle()
             withAnimation(.easeInOut) {
                 if rotationDegrees == 0 {
                     rotationDegrees = 180
@@ -98,19 +96,19 @@ struct PlaugroundPreview: View {
                     rotationDegrees = 0
                 }
             }
+            onSelect()
         }
-        .zIndex(projectIsSelected ? 2 : 0)
-        .onChange(of: resetRotation) {
-            withAnimation(.easeInOut) {
-                rotationDegrees = 0
+        .onChange(of: isSelected) { 
+            if !isSelected {
+                withAnimation(.easeInOut) {
+                    rotationDegrees = 0
+                }
             }
         }
         .opacity(isDeleted ? 0 : 1)
-
     }
-
 }
 
 #Preview {
-    PlaugroundPreview(width: 400, height: 300, deleteProject: {}, project: ProjectViewModel(project: PlaygroundProject(name: "hello")), resetRotation: .constant(false), projectIsSelected: .constant(false))
+    PlaygroundPreview(width: 400, height: 300, deleteProject: {}, project: ProjectViewModel(project: PlaygroundProject(name: "hello")), resetRotation: .constant(false), isSelected: false, onSelect: {})
 }

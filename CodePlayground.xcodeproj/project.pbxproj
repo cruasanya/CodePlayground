@@ -39,7 +39,7 @@
 		D2F8F2A82C09BF3E00A95CB9 /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2A72C09BF3E00A95CB9 /* ProjectViewModel.swift */; };
 		D2F8F2AA2C09C37F00A95CB9 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2A92C09C37F00A95CB9 /* CharacterViewModel.swift */; };
 		D2F8F2AC2C09C4C600A95CB9 /* CodeBlockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2AB2C09C4C600A95CB9 /* CodeBlockViewModel.swift */; };
-		D2F8F2AE2C09CE8E00A95CB9 /* PlaugroundPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2AD2C09CE8E00A95CB9 /* PlaugroundPreview.swift */; };
+		D2F8F2AE2C09CE8E00A95CB9 /* PlaygroundPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2AD2C09CE8E00A95CB9 /* PlaygroundPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +68,7 @@
 		D2F8F2A72C09BF3E00A95CB9 /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		D2F8F2A92C09C37F00A95CB9 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		D2F8F2AB2C09C4C600A95CB9 /* CodeBlockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBlockViewModel.swift; sourceTree = "<group>"; };
-		D2F8F2AD2C09CE8E00A95CB9 /* PlaugroundPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaugroundPreview.swift; sourceTree = "<group>"; };
+		D2F8F2AD2C09CE8E00A95CB9 /* PlaygroundPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +183,7 @@
 			children = (
 				D20AC51F2C05D96A00E6C26A /* InputView.swift */,
 				D20AC5212C05F78D00E6C26A /* HeaderView.swift */,
-				D2F8F2AD2C09CE8E00A95CB9 /* PlaugroundPreview.swift */,
+				D2F8F2AD2C09CE8E00A95CB9 /* PlaygroundPreview.swift */,
 				D218F86B2C0C9A93001976C1 /* Extensions.swift */,
 			);
 			path = Components;
@@ -315,7 +315,7 @@
 				D20AC5242C05FC3500E6C26A /* CreatingProjectView.swift in Sources */,
 				D20AC51C2C05D8A300E6C26A /* LogInView.swift in Sources */,
 				D20AC4FB2C05C06800E6C26A /* SettingsView.swift in Sources */,
-				D2F8F2AE2C09CE8E00A95CB9 /* PlaugroundPreview.swift in Sources */,
+				D2F8F2AE2C09CE8E00A95CB9 /* PlaygroundPreview.swift in Sources */,
 				D20AC5022C05C0F400E6C26A /* UserViewModel.swift in Sources */,
 				D2C804032C0B7ED4003B7DDF /* PlaygroundView.swift in Sources */,
 				D20AC5042C05C12200E6C26A /* PlaygroundProject.swift in Sources */,
