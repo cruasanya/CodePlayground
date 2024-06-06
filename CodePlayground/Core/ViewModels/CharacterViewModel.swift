@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CharacterViewModel: ObservableObject, Codable {
+class CharacterViewModel: ObservableObject, Codable, Identifiable {
     @Published var character: PlaygroundCharacter
 
     enum CodingKeys: String, CodingKey {
@@ -26,5 +26,9 @@ class CharacterViewModel: ObservableObject, Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(character, forKey: .character)
+    }
+
+    func getSprite() -> String {
+        character.spriteName
     }
 }

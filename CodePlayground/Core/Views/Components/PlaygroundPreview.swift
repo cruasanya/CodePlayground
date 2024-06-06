@@ -39,7 +39,8 @@ struct PlaygroundPreview: View {
             } else {
                 HStack {
                     NavigationLink {
-                        PlaygroundView()
+                        PlaygroundView(playground: project)
+                            .navigationBarBackButtonHidden(true)
                     } label: {
                         VStack {
                             Image(systemName: "play")
