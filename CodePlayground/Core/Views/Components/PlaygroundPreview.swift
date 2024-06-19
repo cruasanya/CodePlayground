@@ -10,13 +10,13 @@ import SwiftUI
 struct PlaygroundPreview: View {
     var width: CGFloat
     var height: CGFloat
+    var isSelected: Bool
+    var onSelect: () -> Void
     var deleteProject: () -> Void
     @State var isDeleted: Bool = false
     @State var project: ProjectViewModel
     @State var rotationDegrees: Double = 0
     @Binding var resetRotation: Bool
-    var isSelected: Bool
-    var onSelect: () -> Void
 
     var body: some View {
         VStack(alignment: .center) {
@@ -39,7 +39,8 @@ struct PlaygroundPreview: View {
             } else {
                 HStack {
                     NavigationLink {
-                        PlaygroundView()
+                        PlaygroundView(playground: project)
+                            .navigationBarBackButtonHidden(true)
                     } label: {
                         VStack {
                             Image(systemName: "play")
@@ -110,5 +111,5 @@ struct PlaygroundPreview: View {
 }
 
 #Preview {
-    PlaygroundPreview(width: 400, height: 300, deleteProject: {}, project: ProjectViewModel(project: PlaygroundProject(name: "hello")), resetRotation: .constant(false), isSelected: false, onSelect: {})
+    PlaygroundPreview(width: 600, height: 400, isSelected: false, onSelect: {}, deleteProject: {}, project: ProjectViewModel(project: PlaygroundProject(name: "hello")), resetRotation: .constant(false))
 }

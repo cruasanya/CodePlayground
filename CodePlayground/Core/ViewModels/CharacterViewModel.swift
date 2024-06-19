@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CharacterViewModel: ObservableObject, Codable {
+class CharacterViewModel: ObservableObject, Codable, Identifiable {
     @Published var character: PlaygroundCharacter
 
     enum CodingKeys: String, CodingKey {
@@ -26,5 +26,38 @@ class CharacterViewModel: ObservableObject, Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(character, forKey: .character)
+    }
+
+    func getSprite() -> String {
+        return character.spriteName
+    }
+
+    func getSize() -> CGFloat {
+        return character.size
+    }
+
+    func getX() -> CGFloat {
+        return CGRect().midX + character.xPosition
+    }
+
+    func getY() -> CGFloat {
+        return CGRect().midY + character.yPosition
+    }
+
+    func getRotation() -> CGFloat {
+        return character.rotationEffect
+    }
+
+    func getName() ->  String {
+        return character.characterName
+    }
+
+    func getVisibility() -> Bool {
+        return character.isHide 
+    }
+
+    func updatePosition(x: CGFloat, y: CGFloat) {
+        character.xPosition = x
+        character.yPosition = y
     }
 }

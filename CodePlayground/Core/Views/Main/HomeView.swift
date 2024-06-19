@@ -39,17 +39,17 @@ struct HomeView: View {
                                     PlaygroundPreview(
                                         width: geometry.size.width * 0.7,
                                         height: geometry.size.height * 1.6,
+                                        isSelected: selectedProjectId == playground.project.id,
+                                        onSelect: {
+                                            selectedProjectId = playground.project.id
+                                        },
                                         deleteProject: {
                                             Task {
                                                 await userViewModel.deleteProject(byID: playground.getID())
                                             }
                                         },
                                         project: playground,
-                                        resetRotation: $resetRotations,
-                                        isSelected: selectedProjectId == playground.project.id,
-                                        onSelect: {
-                                            selectedProjectId = playground.project.id
-                                        }
+                                        resetRotation: $resetRotations
                                     )
                                 }
                             }

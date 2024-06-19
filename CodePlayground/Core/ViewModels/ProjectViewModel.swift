@@ -42,8 +42,16 @@ class ProjectViewModel: ObservableObject, Codable, Identifiable {
         return project.backgroudName
     }
 
+    func getCharacters() -> [CharacterViewModel] {
+        return project.characters
+    }
+
     func changeName(name: String) {
         project.name = name
+    }
+
+    func addCharacter(character: CharacterViewModel) {
+        project.characters.append(character)
     }
 
 }

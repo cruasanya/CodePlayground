@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct PlaygroundView: View {
+    @State var showCodeView: Bool = true
+    @ObservedObject var playground: ProjectViewModel
+
     var body: some View {
-        Text("Hello, World!")
+        VStack (spacing: 0){
+            PlaygroundHeaderView(showCodeView: $showCodeView, playground: playground)
+            Divider()
+            HStack {
+                BlocksScrollView()
+                Spacer()
+                if showCodeView {
+                    CodeView()
+                } else {
+                    SceneView(background: playground.getBackground(), characters: playground.getCharacters())
+                }
+                Spacer()
+                CharactersScrollView(playground: playground)
+
+            }
+        }
     }
 }
 
 #Preview {
-    PlaygroundView()
+    PlaygroundView(playground: ProjectViewModel(project: PlaygroundProject(name: "hello")))
 }

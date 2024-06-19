@@ -12,10 +12,10 @@ class PlaygroundCharacter: Identifiable, Codable {
     var spriteName: String
     var characterName: String
     var isHide: Bool = false
-    var xPosition: Int = 0
-    var yPosition: Int = 0
-    var size: Int = 100
-    var rotationEffect = 0
+    var xPosition: CGFloat = 0
+    var yPosition: CGFloat = 0
+    var size: CGFloat = 100
+    var rotationEffect: CGFloat = 0
     var codeBlocks: [CodeBlockViewModel] = []
 
     init(spriteName: String, characterName: String) {
