@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol BlockProtocol: Identifiable, Codable {
+    var id: String { get }
+    var shape: BlockShapeType { get set }
+    var category: BlockCategory { get set }
+}
