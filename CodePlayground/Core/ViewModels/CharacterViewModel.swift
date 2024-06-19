@@ -29,6 +29,35 @@ class CharacterViewModel: ObservableObject, Codable, Identifiable {
     }
 
     func getSprite() -> String {
-        character.spriteName
+        return character.spriteName
+    }
+
+    func getSize() -> CGFloat {
+        return character.size
+    }
+
+    func getX() -> CGFloat {
+        return CGRect().midX + character.xPosition
+    }
+
+    func getY() -> CGFloat {
+        return CGRect().midY + character.yPosition
+    }
+
+    func getRotation() -> CGFloat {
+        return character.rotationEffect
+    }
+
+    func getName() ->  String {
+        return character.characterName
+    }
+
+    func getVisibility() -> Bool {
+        return character.isHide 
+    }
+
+    func updatePosition(x: CGFloat, y: CGFloat) {
+        character.xPosition = x
+        character.yPosition = y
     }
 }

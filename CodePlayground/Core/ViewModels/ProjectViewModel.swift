@@ -50,4 +50,8 @@ class ProjectViewModel: ObservableObject, Codable, Identifiable {
         project.name = name
     }
 
+    func addCharacter(character: CharacterViewModel) {
+        project.characters.append(character)
+    }
+
 }
