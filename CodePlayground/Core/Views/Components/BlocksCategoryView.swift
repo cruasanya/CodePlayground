@@ -23,6 +23,7 @@ struct BlocksCategoryView: View {
                         .foregroundStyle(color)
                     Text(name)
                         .bold()
+                        .font(.caption2)
                 }
             }
 
