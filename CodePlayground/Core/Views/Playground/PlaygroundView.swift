@@ -78,7 +78,7 @@ struct PlaygroundView: View {
                 if showCodeView {
                     CodeView()
                 } else {
-                    SceneView()
+                    SceneView(background: playground.getBackground(), characters: playground.getCharacters())
                 }
                 Spacer()
                 VStack {
