@@ -29,7 +29,6 @@ struct AddCharacterView: View {
                 addCharater()
             }
         }
-        .navigationTitle("Firebase Images")
         .onAppear {
             imageStorage.fetchImages(type: .characters)
         }
