@@ -37,10 +37,12 @@
 		D282A5912C11CF28004D8FFF /* BlocksCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D282A5902C11CF28004D8FFF /* BlocksCategoryView.swift */; };
 		D282A5932C11D297004D8FFF /* SceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D282A5922C11D297004D8FFF /* SceneView.swift */; };
 		D282A5952C11DE83004D8FFF /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D282A5942C11DE83004D8FFF /* CodeView.swift */; };
+		D28A21442C29B4BE0031BFB6 /* AddCharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28A21432C29B4BE0031BFB6 /* AddCharacterView.swift */; };
 		D2C42F8E2C231D2D00F7C4CC /* PlaygroundHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C42F8D2C231D2D00F7C4CC /* PlaygroundHeaderView.swift */; };
 		D2C42F902C231E6B00F7C4CC /* CharactersScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C42F8F2C231E6B00F7C4CC /* CharactersScrollView.swift */; };
 		D2C42F922C231EC600F7C4CC /* BlocksScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C42F912C231EC600F7C4CC /* BlocksScrollView.swift */; };
 		D2C804032C0B7ED4003B7DDF /* PlaygroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C804022C0B7ED4003B7DDF /* PlaygroundView.swift */; };
+		D2D592392C2C5C9900903708 /* ImageStorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D592382C2C5C9900903708 /* ImageStorageViewModel.swift */; };
 		D2F8F2A42C09BB2B00A95CB9 /* PlaygroundCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2A32C09BB2B00A95CB9 /* PlaygroundCharacter.swift */; };
 		D2F8F2A62C09BCB000A95CB9 /* CodeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2A52C09BCB000A95CB9 /* CodeBlock.swift */; };
 		D2F8F2A82C09BF3E00A95CB9 /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8F2A72C09BF3E00A95CB9 /* ProjectViewModel.swift */; };
@@ -73,10 +75,12 @@
 		D282A5902C11CF28004D8FFF /* BlocksCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksCategoryView.swift; sourceTree = "<group>"; };
 		D282A5922C11D297004D8FFF /* SceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneView.swift; sourceTree = "<group>"; };
 		D282A5942C11DE83004D8FFF /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		D28A21432C29B4BE0031BFB6 /* AddCharacterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCharacterView.swift; sourceTree = "<group>"; };
 		D2C42F8D2C231D2D00F7C4CC /* PlaygroundHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundHeaderView.swift; sourceTree = "<group>"; };
 		D2C42F8F2C231E6B00F7C4CC /* CharactersScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersScrollView.swift; sourceTree = "<group>"; };
 		D2C42F912C231EC600F7C4CC /* BlocksScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlocksScrollView.swift; sourceTree = "<group>"; };
 		D2C804022C0B7ED4003B7DDF /* PlaygroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundView.swift; sourceTree = "<group>"; };
+		D2D592382C2C5C9900903708 /* ImageStorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageViewModel.swift; sourceTree = "<group>"; };
 		D2F8F2A32C09BB2B00A95CB9 /* PlaygroundCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundCharacter.swift; sourceTree = "<group>"; };
 		D2F8F2A52C09BCB000A95CB9 /* CodeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBlock.swift; sourceTree = "<group>"; };
 		D2F8F2A72C09BF3E00A95CB9 /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				D2F8F2A72C09BF3E00A95CB9 /* ProjectViewModel.swift */,
 				D2F8F2A92C09C37F00A95CB9 /* CharacterViewModel.swift */,
 				D2F8F2AB2C09C4C600A95CB9 /* CodeBlockViewModel.swift */,
+				D2D592382C2C5C9900903708 /* ImageStorageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				D2C804022C0B7ED4003B7DDF /* PlaygroundView.swift */,
 				D282A5922C11D297004D8FFF /* SceneView.swift */,
 				D282A5942C11DE83004D8FFF /* CodeView.swift */,
+				D28A21432C29B4BE0031BFB6 /* AddCharacterView.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				D2C42F922C231EC600F7C4CC /* BlocksScrollView.swift in Sources */,
 				D218F86C2C0C9A93001976C1 /* Extensions.swift in Sources */,
 				D20AC4F62C05BFC500E6C26A /* HomeView.swift in Sources */,
+				D2D592392C2C5C9900903708 /* ImageStorageViewModel.swift in Sources */,
 				D20AC4FD2C05C0A400E6C26A /* User.swift in Sources */,
 				D2F8F2A82C09BF3E00A95CB9 /* ProjectViewModel.swift in Sources */,
 				D2F8F2AA2C09C37F00A95CB9 /* CharacterViewModel.swift in Sources */,
@@ -357,6 +364,7 @@
 				D20AC5202C05D96A00E6C26A /* InputView.swift in Sources */,
 				D20AC4E12C05BBA800E6C26A /* CodePlaygroundApp.swift in Sources */,
 				D2F8F2AC2C09C4C600A95CB9 /* CodeBlockViewModel.swift in Sources */,
+				D28A21442C29B4BE0031BFB6 /* AddCharacterView.swift in Sources */,
 				D20AC4F92C05C02C00E6C26A /* UserView.swift in Sources */,
 				D20AC5222C05F78D00E6C26A /* HeaderView.swift in Sources */,
 				D2C42F902C231E6B00F7C4CC /* CharactersScrollView.swift in Sources */,

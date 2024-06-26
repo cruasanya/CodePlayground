@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SceneView: View {
     var background: String
-    @State var characters: [CharacterViewModel]
+    @Binding var characters: [CharacterViewModel]
     @State var xPosition: CGFloat = 0
     @State var yPosition: CGFloat = 0
 
@@ -17,30 +17,38 @@ struct SceneView: View {
         GeometryReader { geometry in
             ZStack {
                 ForEach(characters) { character in
-                    Image(character.getSprite())
-                        .resizable()
-                        .frame(width: character.getSize(), height: character.getSize())
-                        .position(x: geometry.size.width/2 + xPosition, y: geometry.size.height/2  + yPosition)
-                        .onTapGesture {
-                            xPosition = character.getX()
-                            yPosition = character.getY()
-                        }
-                        .gesture(
-                            DragGesture()
-                                .onChanged({ value in
-                                    xPosition = value.translation.width + character.getX()
-                                    yPosition = value.translation.height + character.getY()
-                                })
-                                .onEnded({ value in
-                                    character.updatePosition(
-                                        x: xPosition,
-                                        y: yPosition
-                                    )
-                                    xPosition = character.getX()
-                                    yPosition = character.getY()
-                                })
-                        )
-
+                    AsyncImage(url: character.getSprite()) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: character.getSize(), height: character.getSize())
+                    .onAppear {
+                        xPosition = character.getX()
+                        yPosition = character.getY()
+                    }
+                    .position(x: geometry.size.width/2 + xPosition, y: geometry.size.height/2  + yPosition)
+                    .onTapGesture {
+                        xPosition = character.getX()
+                        yPosition = character.getY()
+                    }
+                    .gesture(
+                        DragGesture()
+                            .onChanged({ value in
+                                xPosition = value.translation.width + character.getX()
+                                yPosition = value.translation.height + character.getY()
+                            })
+                            .onEnded({ value in
+                                character.updatePosition(
+                                    x: xPosition,
+                                    y: yPosition
+                                )
+                                xPosition = character.getX()
+                                yPosition = character.getY()
+                            })
+                    )
+                    
                 }
             }
         }
@@ -48,5 +56,5 @@ struct SceneView: View {
 }
 
 #Preview {
-    SceneView(background: "", characters: [CharacterViewModel(character: PlaygroundCharacter.MOCK_CHARACTER)])
+    SceneView(background: "", characters: .constant([]))
 }

@@ -8,24 +8,30 @@
 import SwiftUI
 
 struct CharactersScrollView: View {
-    @ObservedObject var playground: ProjectViewModel
+    @Binding var showCharactersList: Bool
+    @Binding var characters: [CharacterViewModel]
 
     var body: some View {
         VStack {
             Spacer()
             ScrollView {
                 Button(action: {
-                    //add character
+                    showCharactersList.toggle()
                 }, label: {
                     Image(systemName: "plus.circle")
                         .resizable()
                         .frame(width: 50, height: 50)
                 })
                 .buttonStyle(PlainButtonStyle())
-                ForEach(playground.getCharacters()) { character in
-                    Image(character.getSprite())
-                        .resizable()
-                        .frame(width: 70, height: 70)
+                ForEach(characters) { character in
+                    AsyncImage(url: character.getSprite()) { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 70, height: 70)
+                    .padding(.leading, 10)
                 }
             }
             .scrollIndicators(.hidden)
@@ -38,5 +44,5 @@ struct CharactersScrollView: View {
 }
 
 #Preview {
-    CharactersScrollView(playground: ProjectViewModel(project: PlaygroundProject(name: "hello")))
+    CharactersScrollView(showCharactersList: .constant(false), characters: .constant([]))
 }
