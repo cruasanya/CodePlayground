@@ -28,8 +28,8 @@ class CharacterViewModel: ObservableObject, Codable, Identifiable {
         try container.encode(character, forKey: .character)
     }
 
-    func getSprite() -> String {
-        return character.spriteName
+    func getSprite() -> URL {
+        return character.spriteUrl
     }
 
     func getSize() -> CGFloat {
@@ -54,6 +54,10 @@ class CharacterViewModel: ObservableObject, Codable, Identifiable {
 
     func getVisibility() -> Bool {
         return character.isHide 
+    }
+
+    func getId() -> String {
+        return character.id
     }
 
     func updatePosition(x: CGFloat, y: CGFloat) {

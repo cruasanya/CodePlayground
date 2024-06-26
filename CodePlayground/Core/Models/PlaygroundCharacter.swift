@@ -9,7 +9,7 @@ import Foundation
 
 class PlaygroundCharacter: Identifiable, Codable {
     var id: String
-    var spriteName: String
+    var spriteUrl: URL
     var characterName: String
     var isHide: Bool = false
     var xPosition: CGFloat = 0
@@ -18,13 +18,13 @@ class PlaygroundCharacter: Identifiable, Codable {
     var rotationEffect: CGFloat = 0
     var codeBlocks: [CodeBlockViewModel] = []
 
-    init(spriteName: String, characterName: String) {
+    init(spriteUrl: URL, characterName: String) {
         self.id = UUID().uuidString
-        self.spriteName = spriteName
+        self.spriteUrl = spriteUrl
         self.characterName = characterName
     }
 }
 
 extension PlaygroundCharacter {
-    static var MOCK_CHARACTER = PlaygroundCharacter(spriteName: "MOCK", characterName: "Name")
+    static var MOCK_CHARACTER = PlaygroundCharacter(spriteUrl: URL(string: "gs://codeplayground-1c9e8.appspot.com/characters/bird.png")!, characterName: "bird")
 }
