@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PlaygroundHeaderView: View {
+    var save: () -> Void
     @Binding var showCodeView: Bool
     @Environment(\.dismiss) var dismiss
     @ObservedObject var playground: ProjectViewModel
@@ -19,15 +20,10 @@ struct PlaygroundHeaderView: View {
             Text(playground.getName())
             HStack {
                 Button(action: {
-                    //save
+                    save()
                     dismiss()
                 }, label: {
                     Image(systemName: "chevron.backward")
-                })
-                Button(action: {
-                    //save
-                }, label: {
-                    Image(systemName: "tray.and.arrow.down")
                 })
                 Spacer()
 
@@ -59,5 +55,5 @@ struct PlaygroundHeaderView: View {
 }
 
 #Preview {
-    PlaygroundHeaderView(showCodeView: .constant(true), playground: ProjectViewModel(project: PlaygroundProject(name: "hello")))
+    PlaygroundHeaderView(save: {}, showCodeView: .constant(true), playground: ProjectViewModel(project: PlaygroundProject(name: "hello")))
 }

@@ -13,6 +13,7 @@ struct PlaygroundPreview: View {
     var isSelected: Bool
     var onSelect: () -> Void
     var deleteProject: () -> Void
+    var save: () -> Void
     @State var isDeleted: Bool = false
     @State var project: ProjectViewModel
     @State var rotationDegrees: Double = 0
@@ -39,7 +40,7 @@ struct PlaygroundPreview: View {
             } else {
                 HStack {
                     NavigationLink {
-                        PlaygroundView(playground: project)
+                        PlaygroundView(save: {save()}, playground: project)
                             .navigationBarBackButtonHidden(true)
                     } label: {
                         VStack {
@@ -111,5 +112,5 @@ struct PlaygroundPreview: View {
 }
 
 #Preview {
-    PlaygroundPreview(width: 600, height: 400, isSelected: false, onSelect: {}, deleteProject: {}, project: ProjectViewModel(project: PlaygroundProject(name: "hello")), resetRotation: .constant(false))
+    PlaygroundPreview(width: 600, height: 400, isSelected: false, onSelect: {}, deleteProject: {}, save: {}, project: ProjectViewModel(project: PlaygroundProject(name: "hello")), resetRotation: .constant(false))
 }

@@ -47,6 +47,12 @@ struct HomeView: View {
                                             Task {
                                                 await userViewModel.deleteProject(byID: playground.getID())
                                             }
+                                        }, 
+                                        save: {
+                                            Task {
+                                                guard let user = userViewModel.currentUser else {return}
+                                                await userViewModel.updateUser(user: user)
+                                            }
                                         },
                                         project: playground,
                                         resetRotation: $resetRotations
